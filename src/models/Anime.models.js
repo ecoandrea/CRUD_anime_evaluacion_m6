@@ -1,6 +1,7 @@
 import { v4 as uuidv4 } from 'uuid';
 import { createDataFile, deleteData, getAllData, updateData,getAnimeById, getAnimeByName } from '../utils/fileUtils.js';
-
+import { Validation } from '../utils/Validation.js';
+import { InternalServerError, ValidationError } from '../errors/typesError.js';
 
 export class Anime {
  
@@ -12,10 +13,10 @@ export class Anime {
  
   constructor(nombre, genero, anio, autor) {
     this.#id = uuidv4().slice(0, 8)
-    this.#nombre = nombre;
-    this.#genero = genero;
-    this.#anio = anio;
-    this.#autor = autor;
+    this.#nombre = Validation.nombreAnime(nombre);
+    this.#genero = Validation.generoAnime(genero);
+    this.#anio = Validation.anioAnime(anio);
+    this.#autor = Validation.autorAnime(autor);
   }
   
   // Getters
@@ -27,10 +28,40 @@ export class Anime {
   
   // Setters
   setId(newId) { this.#id = newId; }
-  setNombre(nombre) { this.#nombre = nombre; }
-  setGenero(genero) { this.#genero = genero; }
-  setAnio(anio) { this.#anio = anio; }
-  setAutor(autor) { this.#autor = autor; }
+
+  setNombre(newNombre) {
+    try {
+        Validation.nombre(newNombre)
+        this.#nombre = newNombre;
+    } catch (error) {
+        throw new ValidationError(`Error al modificar nombre: ${error.message}`, error);
+    }
+     }
+  setGenero(newGenero) { 
+    try {
+        Validation.genero(newGenero)
+        this.#genero = newGenero;
+    } catch (error) {
+        throw new ValidationError(`Error al modificar genero: ${error.message}`, error);
+    }
+    }
+  setAnio(newAnio) { 
+    try {
+        Validation.anio(newAnio)
+        this.#anio = newAnio;
+    } catch (error) {
+        throw new ValidationError(`Error al modificar anio: ${error.message}`, error);
+    }
+
+   }
+  setAutor(newAutor) { 
+    try {
+        Validation.autor(newAutor)
+        this.#autor = newAutor;
+    } catch (error) {
+        throw new ValidationError(`Error al modificar autor: ${error.message}`, error);
+    }
+}
 
   // Method to get all properties
   getAllProperties() {
@@ -43,19 +74,19 @@ export class Anime {
     };
   }
 
-  // Static method to create an Anime instance
+
   static async create(data) {
     try {
       const { nombre, genero, anio, autor } = data;
       const anime = new Anime(nombre, genero, anio, autor);
       const animeObject = anime.getAllProperties();
   
-      // Assuming createDataFile is a function to save data to a file
+     
       await createDataFile(animeObject, 'animes.json');
   
       return animeObject;
     } catch (error) {
-      throw new Error('Falló al crear un nuevo animé', error);
+      throw new InternalServerError('Error al crear un nuevo anime', error);
     }
   }
 
@@ -64,7 +95,7 @@ export class Anime {
       const anime = await getAllData('animes.json')
       return anime
     } catch (error) {
-      throw new Error('Error al obtener los datos del animé', error)
+      throw new InternalServerError('Error al obtener los datos del anime', error)
     }
   }
 
@@ -73,7 +104,7 @@ export class Anime {
       const actualizarAnime = await updateData(id, data, 'animes.json')
       return actualizarAnime
     } catch (error) {
-      throw new Error('Fallo al actualizar el anime', error);
+      throw new InternalServerError('Error al actualizar el anime', error);
     }
   }
 
@@ -82,7 +113,7 @@ export class Anime {
       const usuarioBorrar = await deleteData(id, 'animes.json');
       return usuarioBorrar
     } catch (error) {
-      throw new Error('Falló al  eliminar el animé', error);
+      throw new InternalServerError('Falló al  eliminar el anime', error);
     }
   }
 
@@ -91,7 +122,7 @@ export class Anime {
         const idAnime = await getAnimeById(id, 'animes.json')
         return idAnime
     } catch (error) {
-        throw new Error("Error al obtener los datos del animé", error);
+        throw new InternalServerError("Error al obtener los datos del anime", error);
     }
 }
 
@@ -101,7 +132,7 @@ static async findAnimeByName(nombre) {
         const nombreAnime = await getAnimeByName(nombre, 'animes.json')
         return nombreAnime
     } catch (error) {
-        throw new Error("Error al obtener los datos del animé", error);
+        throw new InternalServerError("Error al obtener los datos del anime", error);
     }
 }
 

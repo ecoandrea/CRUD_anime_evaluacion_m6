@@ -1,4 +1,5 @@
-import { createFile, readFile } from "../services/fileServices.js";
+import { JsonError, NotFoundError } from "../errors/typesError.js";
+import { createFile, readFile } from "../services/fileService.js";
 
 
 export const createDataFile = async (data, dataPath) => {
@@ -11,7 +12,7 @@ export const createDataFile = async (data, dataPath) => {
         await createFile(dataJson, dataPath)
         
     } catch (error) {
-        throw new Error(`Error al gestionar la creación del archivo con la data de animé`, error)
+        throw JsonError(`Error al gestionar la creación del archivo con la data de anime`, error)
     }
 }
 
@@ -20,7 +21,7 @@ export const getAllData = async(pathData) => {
         const data = await readFile(pathData)
         return data
     } catch (error) {
-        throw new Error('No pudimos acceder a los animes', error)
+        throw new NotFoundError('No pudimos acceder a los animes', error)
     }
 }
 
@@ -40,7 +41,7 @@ export const updateData = async(id, newData, pathData) => {
         return oldData
 
     } catch (error) {
-        throw new Error('No pudimos actualizar el animé', error)
+        throw new JsonError('No pudimos actualizar el animé', error)
     }
 }
 
@@ -59,7 +60,7 @@ export const deleteData = async(id, pathData) => {
 
         return dataDelete
     } catch (error) {
-        throw new Error("No pudimos actualizar la data", error);
+        throw new JsonError("No pudimos actualizar la data", error);
     }
 }
 
@@ -70,7 +71,7 @@ export const getAnimeById = async (id, pathData) => {
 
         return dataFound
     } catch (error) {
-        throw new Error('No pudimos encontrar el animé por el id', error)
+        throw new NotFoundError('No pudimos encontrar el animé por el id', error)
     }
 }
 
@@ -87,7 +88,7 @@ export const getAnimeByName = async (nombre, pathData) => {
         );
         return anime
     } catch (error) {
-        throw new Error('No pudimos encontrar el animé por el nombre', error)
+        throw new NotFoundError('No pudimos encontrar el animé por el nombre', error)
     }
 
 } 

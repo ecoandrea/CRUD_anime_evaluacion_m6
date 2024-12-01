@@ -1,21 +1,37 @@
 [
     {
-        "id": "a98cd88f",
+        "id": "1b09f1a9",
         "nombre": "Akira",
         "genero": "Seinen",
+        "anio": "1988",
         "autor": "Katsuhiro Otomo"
     },
     {
-        "id": "c4ee1245",
+        "id": "034b6fd1",
         "nombre": "Dragon Ball",
         "genero": "Shonen",
+        "anio": "1986",
         "autor": "Akira Toriyama"
     },
     {
-        "id": "4c1bc992",
-        "nombre": "Dragon Ball Reloaded ",
+        "id": "2963258a",
+        "nombre": "Sailor Moon",
+        "genero": "Shojo",
+        "anio": "1992",
+        "autor": "Naoko Takeuchi"
+    },
+    {
+        "id": "c7fcb712",
+        "nombre": "Naruto",
         "genero": "Shonen",
-        "anio": "1989",
-        "autor": "Akira Toriyama"
+        "anio": "2002",
+        "autor": "Masashi Kishimoto"
+    },
+    {
+        "id": "49c0627e",
+        "nombre": "Neon Genesis Evangelion",
+        "genero": "Mecha Cabezas",
+        "anio": "1990",
+        "autor": "Yoshiyuki Sadamoto"
     }
 ]

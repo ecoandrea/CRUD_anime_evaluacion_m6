@@ -1,6 +1,7 @@
 import fs from 'fs/promises';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import { JsonError } from '../errors/typesError.js';
 
 
 const __filename = fileURLToPath(import.meta.url);
@@ -15,7 +16,7 @@ export const createFile = async(data, pathData) => {
 
         await fs.writeFile(datafilePath, JSON.stringify(data, null, 4), 'utf8');
     } catch (error) {
-        throw new Error('Error al Crear el archivo de animé', error)
+        throw new JsonError('Error al Crear el archivo de anime', error)
     }
 }
 
@@ -28,7 +29,7 @@ export const readFile = async (pathData) => {
         return JSON.parse(data)
     } catch (error) {
         console.error(`No pudemos leer el archivo: ${error}` )
-        return null
+      return null
     }
 }
 

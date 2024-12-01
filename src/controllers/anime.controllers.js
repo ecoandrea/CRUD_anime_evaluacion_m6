@@ -1,6 +1,7 @@
+import { NotFoundError } from "../errors/typesError.js";
 import { Anime } from "../models/Anime.models.js";
 
-export const createNewAnime = async (req, res,) => {
+export const createNewAnime = async (req, res, next) => {
     try {
         const data = req.body
         const anime = await Anime.create(data);
@@ -11,20 +12,15 @@ export const createNewAnime = async (req, res,) => {
             data: anime
         })
     } catch (error) {
-
-        res.status(500).json({
-            message: 'Error at create data',
-            status: 500,
-            error
-        })
+      next(error)
     }
 }
 
-export const getAllAnime = async (req, res) => {
+export const getAllAnime = async (req, res, next) => {
     try {
         const data = await Anime.findAll();
 
-        if (!data) throw new Error('No existen los animes', `No se encontraron los animes solictadoes en la ruta correspondiente`)
+        if (!data) throw new NotFoundError('No existen los animes', 'No se encontraron los animes solictadoes en la ruta correspondiente')
 
         res.status(200).json({
             message: 'Animes Encontrados!',
@@ -32,15 +28,11 @@ export const getAllAnime = async (req, res) => {
             data
         })
     } catch (error) {
-        res.status(404).json({
-            message: 'Data not Found',
-            status: 404,
-            error
-        })
+        next(error)
     }
 }
 
-export const updateAnime = async (req, res) => {
+export const updateAnime = async (req, res, next) => {
     try {
         const { id } = req.params
         const dataAnime = req.body
@@ -54,16 +46,12 @@ export const updateAnime = async (req, res) => {
             newData: dataAnime
         })
     } catch (error) {
-        res.status(500).json({
-            message: 'Error at update data',
-            status: 500,
-            error
-        })
+        next(error)
     }
 }
 
 
-export const deleteAnime = async (req, res) => {
+export const deleteAnime = async (req, res, next) => {
     try {
         const { id } = req.params
 
@@ -75,16 +63,12 @@ export const deleteAnime = async (req, res) => {
             dataDeleted: usuarioBorrar
         })
     } catch (error) {
-        res.status(500).json({
-            message: 'We cannot delete content',
-            status: 500,
-            error
-        })
+        next(error)
     }
 }
 
 
-export const getByIdAnime = async (req, res) => {
+export const getByIdAnime = async (req, res, next) => {
 
     try {
         const { id } = req.params;
@@ -99,16 +83,12 @@ export const getByIdAnime = async (req, res) => {
             data,
         });
     } catch (error) {
-        res.status(404).json({
-            message: "Data not Found",
-            status: 404,
-            error,
-        });
+        next(error)
     }
 };
 
 
-export const getByNameAnime = async (req, res) => {
+export const getByNameAnime = async (req, res, next) => {
 
     try {
 
@@ -122,12 +102,7 @@ export const getByNameAnime = async (req, res) => {
         });
 
     } catch (error) {
-        console.error(`Error en obtenerPeliculaPorNombre: ${error.message}`);
-        res.status(404).json({
-            message: "Data not Found",
-            status: 404,
-            error,
-        });
+        next(error)
     }
 
 };
