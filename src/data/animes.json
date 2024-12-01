@@ -1,0 +1,21 @@
+[
+    {
+        "id": "a98cd88f",
+        "nombre": "Akira",
+        "genero": "Seinen",
+        "autor": "Katsuhiro Otomo"
+    },
+    {
+        "id": "c4ee1245",
+        "nombre": "Dragon Ball",
+        "genero": "Shonen",
+        "autor": "Akira Toriyama"
+    },
+    {
+        "id": "4c1bc992",
+        "nombre": "Dragon Ball Reloaded ",
+        "genero": "Shonen",
+        "anio": "1989",
+        "autor": "Akira Toriyama"
+    }
+]
