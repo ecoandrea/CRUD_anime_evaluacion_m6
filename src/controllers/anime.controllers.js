@@ -20,7 +20,7 @@ export const getAllAnime = async (req, res, next) => {
     try {
         const data = await Anime.findAll();
 
-        if (!data) throw new NotFoundError('No existen los animes', 'No se encontraron los animes solictadoes en la ruta correspondiente')
+        if (!data) throw new NotFoundError('No existen los animes, no se encontraron los animes solictadoes en la ruta correspondiente')
 
         res.status(200).json({
             message: 'Animes Encontrados!',
@@ -39,8 +39,8 @@ export const updateAnime = async (req, res, next) => {
 
         const actualizarAnime = await Anime.update(id, dataAnime)
 
-        res.status(201).json({
-            message: 'Animé Actualizado',
+        res.status(200).json({
+            message: 'Anime Actualizado',
             status: 201,
             oldData: actualizarAnime,
             newData: dataAnime

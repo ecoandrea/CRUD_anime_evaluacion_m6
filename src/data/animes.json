@@ -1,17 +1,10 @@
 [
     {
-        "id": "1b09f1a9",
-        "nombre": "Akira",
-        "genero": "Seinen",
-        "anio": "1988",
-        "autor": "Katsuhiro Otomo"
-    },
-    {
         "id": "034b6fd1",
-        "nombre": "Dragon Ball",
-        "genero": "Shonen",
-        "anio": "1986",
-        "autor": "Akira Toriyama"
+        "nombre": "Akira ",
+        "genero": "Seinen",
+        "anio": "1975",
+        "autor": "Katsuhiro Otomo"
     },
     {
         "id": "2963258a",
@@ -33,5 +26,12 @@
         "genero": "Mecha Cabezas",
         "anio": "1990",
         "autor": "Yoshiyuki Sadamoto"
+    },
+    {
+        "id": "89a291f2",
+        "nombre": "Akira",
+        "genero": "Seinen",
+        "anio": "1988",
+        "autor": "Katsuhiro Otomo"
     }
 ]

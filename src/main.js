@@ -16,3 +16,5 @@ app.use(errorHandler)
 app.listen(PORT, () => {
     console.log(`Servidor corriendo en el puerto 3000👽`)
 })
+
+export default app

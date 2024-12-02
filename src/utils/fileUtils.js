@@ -12,7 +12,7 @@ export const createDataFile = async (data, dataPath) => {
         await createFile(dataJson, dataPath)
         
     } catch (error) {
-        throw JsonError(`Error al gestionar la creación del archivo con la data de anime`, error)
+        throw JsonError('Error al gestionar la creación del archivo con la data de anime', error)
     }
 }
 
@@ -30,7 +30,7 @@ export const updateData = async(id, newData, pathData) => {
         const data = await readFile(pathData);
         const indexData  = data.findIndex(dataFound => dataFound.id === id);
 
-        if(indexData === -1) console.error('No pudimos actualizar el animé ')
+        if(indexData === -1) console.error('No pudimos actualizar el anime')
         
       
         const oldData = {...data[indexData]}
@@ -41,7 +41,7 @@ export const updateData = async(id, newData, pathData) => {
         return oldData
 
     } catch (error) {
-        throw new JsonError('No pudimos actualizar el animé', error)
+        throw new JsonError('No pudimos actualizar el anime', error)
     }
 }
 
@@ -51,7 +51,7 @@ export const deleteData = async(id, pathData) => {
 
         const indexData = data.findIndex( dataFound => dataFound.id === id );
 
-        if(indexData === -1) throw new Error(`No pudimos encontrar la data`);
+        if(indexData === -1) throw new Error('No pudimos encontrar la data');
 
         const dataDelete = data[indexData]
         data.splice(indexData, 1)
@@ -60,7 +60,7 @@ export const deleteData = async(id, pathData) => {
 
         return dataDelete
     } catch (error) {
-        throw new JsonError("No pudimos actualizar la data", error);
+        throw new JsonError('No pudimos actualizar la data', error);
     }
 }
 
@@ -71,7 +71,7 @@ export const getAnimeById = async (id, pathData) => {
 
         return dataFound
     } catch (error) {
-        throw new NotFoundError('No pudimos encontrar el animé por el id', error)
+        throw new NotFoundError('No pudimos encontrar el anime por el id', error)
     }
 }
 
@@ -88,7 +88,7 @@ export const getAnimeByName = async (nombre, pathData) => {
         );
         return anime
     } catch (error) {
-        throw new NotFoundError('No pudimos encontrar el animé por el nombre', error)
+        throw new NotFoundError('No pudimos encontrar el anime por el nombre', error)
     }
 
 } 

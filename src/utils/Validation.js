@@ -10,6 +10,8 @@ export class Validation {
      * @throws {ValidationError} - Si el nombre no es válido
      */
     static nombreAnime(nombreAnime) {
+        nombreAnime = nombreAnime.trim();
+
         if (typeof nombreAnime !== 'string') {
             throw new ValidationError('El nombre del anime debe ser una cadena de texto.');
         }

@@ -29,7 +29,7 @@ export const readFile = async (pathData) => {
         return JSON.parse(data)
     } catch (error) {
         console.error(`No pudemos leer el archivo: ${error}` )
-      return null
+      throw new JsonError('Error al leer el archivo de anime', error)
     }
 }
 

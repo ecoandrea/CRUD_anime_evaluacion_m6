@@ -86,7 +86,7 @@ export class Anime {
   
       return animeObject;
     } catch (error) {
-      throw new InternalServerError('Error al crear un nuevo anime', error);
+      throw new InternalServerError('Error al crear un nuevo anime 💣npm run test', error);
     }
   }
 
@@ -95,7 +95,7 @@ export class Anime {
       const anime = await getAllData('animes.json')
       return anime
     } catch (error) {
-      throw new InternalServerError('Error al obtener los datos del anime', error)
+      throw new InternalServerError('Error al obtener todos los datos del anime 💣', error)
     }
   }
 
@@ -104,7 +104,7 @@ export class Anime {
       const actualizarAnime = await updateData(id, data, 'animes.json')
       return actualizarAnime
     } catch (error) {
-      throw new InternalServerError('Error al actualizar el anime', error);
+      throw new InternalServerError('Error al actualizar el anime 💣', error);
     }
   }
 
@@ -113,7 +113,7 @@ export class Anime {
       const usuarioBorrar = await deleteData(id, 'animes.json');
       return usuarioBorrar
     } catch (error) {
-      throw new InternalServerError('Falló al  eliminar el anime', error);
+      throw new InternalServerError('Error al  eliminar el anime', error);
     }
   }
 
@@ -122,7 +122,7 @@ export class Anime {
         const idAnime = await getAnimeById(id, 'animes.json')
         return idAnime
     } catch (error) {
-        throw new InternalServerError("Error al obtener los datos del anime", error);
+        throw new InternalServerError("Error al obtener los datos del anime 💣", error);
     }
 }
 
@@ -132,7 +132,7 @@ static async findAnimeByName(nombre) {
         const nombreAnime = await getAnimeByName(nombre, 'animes.json')
         return nombreAnime
     } catch (error) {
-        throw new InternalServerError("Error al obtener los datos del anime", error);
+        throw new InternalServerError("Error al obtener los datos del anime 💣", error);
     }
 }
 
