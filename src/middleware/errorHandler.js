@@ -5,7 +5,7 @@ export const errorHandler = (err, res) => {
 
     if(!(err instanceof AppError)) {
         err = new InternalServerError(
-            err.message || 'Error Inesperado', 
+            err.message || 'Error Inesperado 🤦‍♀️', 
             'Ocurrio un Error inesperado que requiere analisis'
         )
     }
@@ -17,7 +17,7 @@ export const errorHandler = (err, res) => {
         details: err.details
     };
 
-    console.error(`[Error!] ${err.message}. Detalle: ${err.details}`); //cortesia para desarrolladores
+  
 
     res.status(err.statusCode).json(errorResponse);
 }

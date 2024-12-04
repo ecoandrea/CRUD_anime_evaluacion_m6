@@ -20,7 +20,7 @@ export const getAllAnime = async (req, res, next) => {
     try {
         const data = await Anime.findAll();
 
-        if (!data) throw new NotFoundError('No existen los animes, no se encontraron los animes solictadoes en la ruta correspondiente')
+        if (!data) throw new NotFoundError('No existen los animes', 'No se encontraron los animes solictadoes en la ruta correspondiente')
 
         res.status(200).json({
             message: 'Animes Encontrados!',
@@ -58,7 +58,7 @@ export const deleteAnime = async (req, res, next) => {
         const usuarioBorrar = await Anime.delete(id)
 
         res.status(200).json({
-            message: `Usuario con id ${id} eliminado con éxito`,
+            message: `Anime con id ${id} eliminado con éxito`,
             status: 200,
             dataDeleted: usuarioBorrar
         })
@@ -75,7 +75,7 @@ export const getByIdAnime = async (req, res, next) => {
         const data = await Anime.findAnimeById(id);
 
         if (!data)
-            throw new Error(`No encontramos animé por id: ${id}`);
+            throw new NotFoundError("La data se encuentra vacía", `No encontramos el anime por  id: ${id}`);
 
         res.status(200).json({
             messsage: "Animé encontrada pot ID",

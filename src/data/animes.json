@@ -1,12 +1,5 @@
 [
     {
-        "id": "034b6fd1",
-        "nombre": "Akira ",
-        "genero": "Seinen",
-        "anio": "1975",
-        "autor": "Katsuhiro Otomo"
-    },
-    {
         "id": "2963258a",
         "nombre": "Sailor Moon",
         "genero": "Shojo",
@@ -28,10 +21,24 @@
         "autor": "Yoshiyuki Sadamoto"
     },
     {
-        "id": "89a291f2",
+        "id": "631fc505",
+        "nombre": "Dragon Ball GT",
+        "genero": "Shonen",
+        "anio": "1996",
+        "autor": "Akira Toriyama"
+    },
+    {
+        "id": "7a0fb9bb",
         "nombre": "Akira",
         "genero": "Seinen",
         "anio": "1988",
+        "autor": "Katsuhiro Otomo"
+    },
+    {
+        "id": "80a0ce07",
+        "nombre": "Akira 2",
+        "genero": "Seinen",
+        "anio": "1990",
         "autor": "Katsuhiro Otomo"
     }
 ]

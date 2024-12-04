@@ -86,7 +86,7 @@ export class Anime {
   
       return animeObject;
     } catch (error) {
-      throw new InternalServerError('Error al crear un nuevo anime 💣npm run test', error);
+      throw new InternalServerError('Error al crear un nuevo anime 😒', error);
     }
   }
 
@@ -95,17 +95,28 @@ export class Anime {
       const anime = await getAllData('animes.json')
       return anime
     } catch (error) {
-      throw new InternalServerError('Error al obtener todos los datos del anime 💣', error)
+      throw new InternalServerError('Error al obtener todos los datos del anime 😒', error)
     }
   }
 
   static async update(id, data) {
     try {
-      const actualizarAnime = await updateData(id, data, 'animes.json')
-      return actualizarAnime
-    } catch (error) {
-      throw new InternalServerError('Error al actualizar el anime 💣', error);
-    }
+      const {nombre, genero, anio, autor} = data
+      const validarNombre = Validation.nombreAnime(nombre)
+      const validarGenero = Validation.generoAnime(genero)
+      const validarAnio = Validation.anioAnime(anio)
+      const validarAutor = Validation.autorAnime(autor)
+  
+      const objetoValidado = { nombre: validarNombre, genero: validarGenero, anio: validarAnio, autor:validarAutor}
+  
+      
+      const actualizarAnime = await updateData(id, objetoValidado, 'animes.json')
+        return actualizarAnime
+    
+  } catch (error) {
+  
+    throw new InternalServerError('Error al actualizar el anime 😒', error);
+  }
   }
 
   static async delete(id) {
@@ -122,7 +133,7 @@ export class Anime {
         const idAnime = await getAnimeById(id, 'animes.json')
         return idAnime
     } catch (error) {
-        throw new InternalServerError("Error al obtener los datos del anime 💣", error);
+        throw new InternalServerError("Error al obtener los datos del anime 😒", error);
     }
 }
 
@@ -132,7 +143,7 @@ static async findAnimeByName(nombre) {
         const nombreAnime = await getAnimeByName(nombre, 'animes.json')
         return nombreAnime
     } catch (error) {
-        throw new InternalServerError("Error al obtener los datos del anime 💣", error);
+        throw new InternalServerError("Error al obtener los datos del anime 😒", error);
     }
 }
 

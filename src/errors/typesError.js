@@ -20,6 +20,6 @@ export class JsonError extends AppError {
 
 export class InternalServerError extends AppError {
   constructor(message, details) {
-    super(message || "Error interno del Servidor 💣", 404, details);
+    super(message || "Error interno del Servidor 💣", 500, details);
   }
 }

@@ -4,9 +4,9 @@ export class Validation {
 
 
      /**
-     * Valida el nombre de la película
-     * @param {string} nombreAnime - Nombre de la película
-     * @returns {string} - El nombre de la película si es válido
+     * Valida el nombre del anime
+     * @param {string} nombreAnime - Nombre del anime
+     * @returns {string} - El nombre del anime si es válido
      * @throws {ValidationError} - Si el nombre no es válido
      */
     static nombreAnime(nombreAnime) {
@@ -28,10 +28,10 @@ export class Validation {
 
 
      /**
-     * Valida el nombre de la película
-     * @param {string} generoAnime - Nombre de la película
-     * @returns {string} - El nombre de la película si es válido
-     * @throws {ValidationError} - Si el nombre no es válido
+     * Valida el genero del anime
+     * @param {string} generoAnime - Genero del anime
+     * @returns {string} - El genero del anime si es válido
+     * @throws {ValidationError} - Si el genero no es válido
      */
     static generoAnime(generoAnime) {
         if (typeof generoAnime !== 'string') {
@@ -48,10 +48,10 @@ export class Validation {
     }
 
      /**
-     * Valida el nombre de la película
-     * @param {string} anioAnime - Nombre de la película
-     * @returns {string} - El nombre de la película si es válido
-     * @throws {ValidationError} - Si el nombre no es válido
+     * Valida el anio del anime
+     * @param {string} anioAnime - Anio del anime
+     * @returns {string} - El anio del anime si es válido
+     * @throws {ValidationError} - Si el anio no es válido
      */
 
     static anioAnime(anioAnime) {
@@ -77,10 +77,10 @@ export class Validation {
     }
 
      /**
-     * Valida el nombre de la película
-     * @param {string} autorAnime - Nombre de la película
-     * @returns {string} - El nombre de la película si es válido
-     * @throws {ValidationError} - Si el nombre no es válido
+     * Valida el autor del anime
+     * @param {string} autorAnime -Autor del anime
+     * @returns {string} - El autor del anime si es válido
+     * @throws {ValidationError} - Si el autor no es válido
      */
     static autorAnime(autorAnime) {
         if (typeof autorAnime !== 'string') {
