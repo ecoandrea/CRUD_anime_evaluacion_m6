@@ -40,5 +40,19 @@
         "genero": "Seinen",
         "anio": "1990",
         "autor": "Katsuhiro Otomo"
+    },
+    {
+        "id": "5e61e8bb",
+        "nombre": "Dragon Ball 4",
+        "genero": "Shonen",
+        "anio": "1986",
+        "autor": "Akira Toriyama"
+    },
+    {
+        "id": "07c5ae9f",
+        "nombre": "Dragon Ball",
+        "genero": "Shonen",
+        "anio": "1986",
+        "autor": "Akira Toriyama"
     }
 ]

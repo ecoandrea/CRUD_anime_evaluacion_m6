@@ -7,8 +7,8 @@ export class ValidationError extends AppError {
 }
 
 export class NotFoundError extends AppError {
-  constructor(message, details) {
-    super(message || " No encontrado ❓", 404 , details);
+  constructor(message, details, entity) {
+    super(message || `${entity} No encontrado ❓`, 404 , details);
   }
 }
 

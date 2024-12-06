@@ -1,7 +1,7 @@
 import AppError from "../errors/AppError.js";
 import { InternalServerError } from "../errors/typesError.js";
 
-export const errorHandler = (err, res) => {
+export const errorHandler = (err, req, res, next) => {
 
     if(!(err instanceof AppError)) {
         err = new InternalServerError(
