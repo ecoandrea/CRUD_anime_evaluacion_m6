@@ -6,22 +6,21 @@ export class Validation {
      /**
      * Valida el nombre del anime
      * @param {string} nombreAnime - Nombre del anime
-     * @param {string} fieldName - El nombre del campo que se esta validando
      * @returns {string} - El nombre del anime si es válido
      * @throws {ValidationError} - Si el nombre no es válido
      */
-    static nombreAnime(nombreAnime, fieldName) {
+    static nombreAnime(nombreAnime) {
         nombreAnime = nombreAnime.trim();
 
         if (typeof nombreAnime !== 'string') {
-            throw new ValidationError(` ${fieldName}  debe ser una cadena de texto.`);
+            throw new ValidationError('El nombre del anime debe ser una cadena de texto.');
         }
 
         // Permite letras, números y espacios, pero ajusta para permitir guiones y apóstrofes
         const nombreRegex = /^[a-zA-ZáéíóúÁÉÓÍÚñÑüÜ0-9\s'\-]+$/;
 
         if (!nombreRegex.test(nombreAnime)) {
-            throw new ValidationError(`${fieldName} debe contener solo letras, números, guiones, apóstrofes y espacios.`);
+            throw new ValidationError('El nombre del anime debe contener solo letras, números, guiones, apóstrofes y espacios.');
         }
 
         return nombreAnime;
